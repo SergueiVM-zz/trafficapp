@@ -52,7 +52,7 @@ export class AppComponent {
       .map(road => {
         return {
           "name": road,
-          "value": false
+          "value": true
         }
       });
   }

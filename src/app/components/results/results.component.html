@@ -1,4 +1,4 @@
-<main class="container">
-
+<main class="container" [hidden]="trafficEvents.length === 0">
+  <hr>
   <app-traffic-event *ngFor="let item of trafficEvents" [item]="item"></app-traffic-event>
 </main>

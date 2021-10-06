@@ -15,4 +15,10 @@ export class TrafficEventComponent implements OnInit {
   ngOnInit() {
   }
 
+  plainDescription() {
+    var html = this.item.descripcion;
+    var div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText
+  }
 }
