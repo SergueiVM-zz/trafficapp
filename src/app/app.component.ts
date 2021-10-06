@@ -9,9 +9,10 @@ import { InfocarService } from './services/infocar.service';
 })
 export class AppComponent {
 
-  trafficEvents: TrafficEvent[];
-  provinces: any[];
-  roads: any[]
+  trafficEvents: TrafficEvent[] = [];
+  provinces: any[] = [];
+  roads: any[] = [];
+  filteredEvents: TrafficEvent[] = [];
 
   constructor(private infocarService: InfocarService, private availableProvinceService: AvailableProvincesService) { }
 
@@ -36,7 +37,20 @@ export class AppComponent {
             "value": true
           }
         });
+
+      this.filterTrafficEvents();
     });
+
+  }
+
+  filterTrafficEvents() {
+    console.log("filterTrafficEvents");
+    
+    const activeProvices = this.provinces.filter(item => item.value).map(item => item.name);
+    const activeRoads = this.roads.filter(item => item.value).map(item => item.name);
+    this.filteredEvents = this.trafficEvents
+      .filter(trafficEvent => activeProvices.includes(trafficEvent.provincia))
+      .filter(trafficEvent => activeRoads.includes(trafficEvent.carretera));
   }
 
 }

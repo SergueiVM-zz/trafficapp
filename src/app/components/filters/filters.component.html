@@ -1,8 +1,8 @@
 <div class="container">
   <div class="btn-toolbar btn-toolbar-sm" role="toolbar">
-    <app-province-filter *ngFor="let province of provinces" [item]="province"></app-province-filter>
+    <app-province-filter *ngFor="let province of provinces" [item]="province" (toggleProvince)="selectionChanged()"></app-province-filter>
   </div>
-  <button class="btn btn-sm btn-secondary" (click)="toggleProvinces()">Invertir selección</button>
+  <button class="btn btn-sm btn-secondary" (click)="toggleProvinces($event)">Invertir selección</button>
 </div>
 <hr>
 <div class="container">
