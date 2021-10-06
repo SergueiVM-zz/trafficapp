@@ -9,7 +9,6 @@ import { AvailableProvincesService } from 'src/app/services/available-provinces.
 export class FiltersComponent implements OnInit {
 
   provinces: any[];
-  provincias: any[] = [];
 
   constructor(private availableProvincesService: AvailableProvincesService) { }
 
@@ -20,7 +19,9 @@ export class FiltersComponent implements OnInit {
     });
   }
 
-  selectedFilter(item: any) {
+  onToggle() {
+    console.log("Toogle")
+    this.provinces.forEach(province => province.value = !province.value);
 
   }
 }
