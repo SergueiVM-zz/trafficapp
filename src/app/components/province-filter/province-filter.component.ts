@@ -14,8 +14,18 @@ export class ProvinceFilterComponent implements OnInit {
   ngOnInit() {
   }
 
-  onToggle(item) {
-    item.value = !item.value;
+  onToggle() {
+    this.item.value = !this.item.value;
   }
 
+  setClasses() {
+    let classes = {
+      item: true,
+      "btn btn-sm": true,
+      "btn-outline-success": this.item.value,
+      "btn-outline-danger": !this.item.value
+    };
+
+    return classes;
+  }
 }
