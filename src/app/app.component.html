@@ -1,12 +1,3 @@
 <app-header></app-header>
-<div class="container">
-  <app-filters [provinces]="provinces" [roads]="roads" (onFilterChange)="filterTrafficEvents()"></app-filters>
-  <hr>
-  <div class="container">
-    <button class="btn btn-sm btn-primary" (click)="filterTrafficEvents()">Filtrar</button>
-  </div>
-  <hr>
-  <app-results [trafficEvents]="filteredEvents"></app-results>
-
-</div>
-
+<app-filters [provinces]="provinces" [roads]="roads" (onFilterChange)="filterTrafficEvents()"></app-filters>
+<app-results [trafficEvents]="filteredEvents"></app-results>
