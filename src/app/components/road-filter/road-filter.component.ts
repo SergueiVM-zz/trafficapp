@@ -18,7 +18,6 @@ export class RoadFilterComponent implements OnInit {
 
 
   onToggle() {
-    console.log("RoadFilterComponent onToogle");
     this.item.value = !this.item.value;
     this.onToggleRoad.emit(null);
   }

@@ -29,11 +29,9 @@ export class FiltersComponent implements OnInit {
   }
 
   provinceSelectionChanged() {
-    console.log("provinceSelectionChanged");
     this.onFilterChange.emit(null);
   }
   roadSelectionChanged() {
-    console.log("provinceSelectionChanged");
     this.onFilterChange.emit(null);
   }
 }

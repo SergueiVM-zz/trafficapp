@@ -71,15 +71,12 @@ export class AppComponent {
     //Add new roads
     const roadsIndex = this.roads.map(road => road.name);
     availableRoads.filter(road => !roadsIndex.includes(road.name)).forEach(road => this.roads.push(road));
-    console.log
     return this.roads;
   }
 
   filterTrafficEvents() {
-    console.log("filterTrafficEvents");
     const activeProvices = this.getActiveProvinces();
     const activeRoads = this.updateRoads().filter(road => road.value).map(item => item.name);
-    console.log(activeProvices, activeRoads);
     this.filteredEvents = this.trafficEvents
       .filter(trafficEvent => activeProvices.includes(trafficEvent.provincia))
       .filter(trafficEvent => activeRoads.includes(trafficEvent.carretera));
