@@ -8,20 +8,19 @@ import { AvailableProvincesService } from 'src/app/services/available-provinces.
 })
 export class FiltersComponent implements OnInit {
 
-  provinces: any[];
+  @Input() provinces: any[];
+  @Input() roads: any[];
 
   constructor(private availableProvincesService: AvailableProvincesService) { }
 
-  ngOnInit(): void {
-    this.availableProvincesService.getProvinces().subscribe(provinces => {
-      this.provinces = provinces;
-      console.log(this.provinces.length);
-    });
+  ngOnInit(): void { }
+
+  toggleProvinces() {
+    this.provinces.forEach(province => province.value = !province.value);
   }
 
-  onToggle() {
-    console.log("Toogle")
-    this.provinces.forEach(province => province.value = !province.value);
+  toggleRoads() {
+    this.roads.forEach(road => road.value = !road.value);
 
   }
 }
