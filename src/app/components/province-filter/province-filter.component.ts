@@ -17,7 +17,7 @@ export class ProvinceFilterComponent implements OnInit {
   }
 
   onToggle(item: SelectionItem) {
-    console.log("onToggle")
+    console.log("ProvinceFilterComponent onToggle")
     this.item.value = !this.item.value;
     this.toggleProvince.emit(this.item);
   }

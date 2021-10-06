@@ -27,7 +27,7 @@ export class AppComponent {
         .map(province => {
           return {
             "name": province,
-            "value": true
+            "value": false
           }
         });
 
@@ -52,7 +52,7 @@ export class AppComponent {
       .map(road => {
         return {
           "name": road,
-          "value": true
+          "value": false
         }
       });
   }
@@ -78,7 +78,8 @@ export class AppComponent {
   filterTrafficEvents() {
     console.log("filterTrafficEvents");
     const activeProvices = this.getActiveProvinces();
-    const activeRoads = this.updateRoads().map(item => item.name);
+    const activeRoads = this.updateRoads().filter(road => road.value).map(item => item.name);
+    console.log(activeProvices, activeRoads);
     this.filteredEvents = this.trafficEvents
       .filter(trafficEvent => activeProvices.includes(trafficEvent.provincia))
       .filter(trafficEvent => activeRoads.includes(trafficEvent.carretera));

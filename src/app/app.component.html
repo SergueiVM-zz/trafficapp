@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container">
-  <app-filters [provinces]="provinces" [roads]="roads" (onToggleProvince)="filterTrafficEvents()"></app-filters>
+  <app-filters [provinces]="provinces" [roads]="roads" (onFilterChange)="filterTrafficEvents()"></app-filters>
   <hr>
   <div class="container">
     <button class="btn btn-sm btn-primary" (click)="filterTrafficEvents()">Filtrar</button>

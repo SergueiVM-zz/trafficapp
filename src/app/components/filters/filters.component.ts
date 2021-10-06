@@ -12,7 +12,7 @@ export class FiltersComponent implements OnInit {
 
   @Input() provinces: any[];
   @Input() roads: any[];
-  @Output() onToggleProvince: EventEmitter<SelectionItem> = new EventEmitter();
+  @Output() onFilterChange: EventEmitter<SelectionItem> = new EventEmitter();
 
   constructor(private availableProvincesService: AvailableProvincesService) { }
 
@@ -20,7 +20,7 @@ export class FiltersComponent implements OnInit {
 
   toggleProvinces() {
     this.provinces.forEach(province => province.value = !province.value);
-    this.onToggleProvince.emit(null);
+    this.provinceSelectionChanged();
 
   }
 
@@ -28,8 +28,12 @@ export class FiltersComponent implements OnInit {
     this.roads.forEach(road => road.value = !road.value);
   }
 
-  selectionChanged() {
-    console.log("selectionChanged");
-    this.onToggleProvince.emit(null);
+  provinceSelectionChanged() {
+    console.log("provinceSelectionChanged");
+    this.onFilterChange.emit(null);
+  }
+  roadSelectionChanged() {
+    console.log("provinceSelectionChanged");
+    this.onFilterChange.emit(null);
   }
 }

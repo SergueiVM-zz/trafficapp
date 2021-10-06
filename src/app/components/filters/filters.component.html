@@ -1,13 +1,13 @@
 <div class="container">
   <div class="btn-toolbar btn-toolbar-sm" role="toolbar">
-    <app-province-filter *ngFor="let province of provinces" [item]="province" (toggleProvince)="selectionChanged()"></app-province-filter>
+    <app-province-filter *ngFor="let province of provinces" [item]="province" (toggleProvince)="provinceSelectionChanged()"></app-province-filter>
   </div>
   <button class="btn btn-sm btn-secondary" (click)="toggleProvinces($event)">Invertir selección</button>
 </div>
 <hr>
 <div class="container">
   <div class="btn-toolbar btn-toolbar-sm" role="toolbar">
-    <app-province-filter *ngFor="let road of roads" [item]="road"></app-province-filter>
+    <app-road-filter *ngFor="let road of roads" [item]="road" (onToggleRoad)="roadSelectionChanged()"></app-road-filter>
   </div>
   <button class="btn btn-sm btn-secondary" (click)="toggleRoads()">Invertir selección</button>
 </div>

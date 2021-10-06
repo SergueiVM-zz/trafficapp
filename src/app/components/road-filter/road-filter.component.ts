@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { SelectionItem } from 'src/app/models/selection-item';
 
 @Component({
   selector: 'app-road-filter',
@@ -7,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RoadFilterComponent implements OnInit {
 
-  @Input() item: any;
+  @Input() item: SelectionItem;
+  @Output() onToggleRoad: EventEmitter<SelectionItem> = new EventEmitter();
+
 
   constructor() { }
 
@@ -15,7 +18,9 @@ export class RoadFilterComponent implements OnInit {
 
 
   onToggle() {
+    console.log("RoadFilterComponent onToogle");
     this.item.value = !this.item.value;
+    this.onToggleRoad.emit(null);
   }
 
   setClasses() {
