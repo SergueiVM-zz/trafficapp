@@ -1,4 +1,1 @@
-<div class="form-check form-switch"  >
-  <input class="form-check-input" type="checkbox" id="chk{{item.name}}" [checked]="item.value" (change)="onToggle(item)" />
-  <label class="form-check-label" for="chk{{item.name}}">{{item.name}}</label>
-</div>
+<button type="button" [ngClass]="setClasses()" (click)="onToggle($event)">{{item.name}}</button>

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { SelectionItem } from 'src/app/models/selection-item';
 
 @Component({
   selector: 'app-province-filter',
@@ -7,15 +8,27 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProvinceFilterComponent implements OnInit {
 
-  @Input() item: any;
+  @Input() item: SelectionItem;
+  @Output() toggleProvince: EventEmitter<SelectionItem> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onToggle(item) {
-    item.value = !item.value;
+  onToggle(item: SelectionItem) {
+    this.item.value = !this.item.value;
+    this.toggleProvince.emit(this.item);
   }
 
+  setClasses() {
+    let classes = {
+      item: true,
+      "btn btn-sm": true,
+      "btn-outline-success": this.item.value,
+      "btn-outline-danger": !this.item.value
+    };
+
+    return classes;
+  }
 }

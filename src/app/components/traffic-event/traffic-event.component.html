@@ -1,20 +1,10 @@
 <article class="card">
    <div class="card-body">
-
-
-    <!-- <div class="col">{{item.codEle}}</div> -->
-    <h5 class="card-title">{{item.alias}}</h5>
+    <h5 class="card-title"><img src="https://infocar.dgt.es/etraffic/img/iconosIncitar/{{item.icono}}" />&nbsp;{{item.alias}}</h5>
   <!--  <div class="col">{{item.descripcion}}</div> -->
     <div class="card-text">
-      <img src="https://infocar.dgt.es/etraffic/img/iconosIncitar/{{item.icono}}" />
-      <div class="">{{item.suceso}}</div>
-      <div class="col">{{item.causa}}</div>
-      <div class="col">{{item.carretera}}</div>
-      <div class="col">{{item.sentido}}</div>
-      <div class="col">{{item.pkIni}}</div>
-      <div class="col">{{item.pkFinal}}</div>
-      <div class="col">{{item.provincia}}</div>
-
+      <p><strong>{{item.provincia}}</strong> {{item.suceso}} {{item.causa}}</p>
+      <div>{{plainDescription()}}</div>
     </div>
   </div>
 </article>
