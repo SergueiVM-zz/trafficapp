@@ -11,7 +11,9 @@ import { ProvinceFilterComponent } from './components/province-filter/province-f
 import { RoadFilterComponent } from './components/road-filter/road-filter.component';
 import { SwapButtonComponent } from './components/swap-button/swap-button.component';
 import { SelectAllButtonComponent } from './components/select-all-button/select-all-button.component';
-import { UnselectAllButtonComponent } from './components/unselect-all-button/unselect-all-button.component'
+import { UnselectAllButtonComponent } from './components/unselect-all-button/unselect-all-button.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { UnselectAllButtonComponent } from './components/unselect-all-button/uns
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
