@@ -1,3 +1,5 @@
+import { AttachSession } from "protractor/built/driverProviders";
+
 export class TrafficEvent {
   codEle: string; // "4866116",
   provincia: string; // "NAVARRA",
@@ -15,12 +17,13 @@ export class TrafficEvent {
   fechaFin: string; //"?",
   lng: number; // -2.1759741,
   lat: number; // 42.8913,
-  causa:  string; // "OBRAS",
-  hora:  string; // "07:55",
+  causa: string; // "OBRAS",
+  hora: string; // "07:55",
   estado: string; // 1,
-  autonomia:  string; // "Navarra, Comunidad Foral de",
+  autonomia: string; // "Navarra, Comunidad Foral de",
   icono: string; // "INC_RMT_RCW_NAP_CAC.png",
-  tipo:  string; // "Incidencia",
-  horaFin:  string; // "?",
-  nivel:  string; // "NO APLICA"
+  tipo: string; // "Incidencia",
+  horaFin: string; // "?",
+  nivel: string; // "NO APLICA"
+
 }

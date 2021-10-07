@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SelectionItem } from './models/selection-item';
 import { TrafficEvent } from './models/traffic-event';
 import { AvailableProvincesService } from './services/available-provinces.service';
 import { InfocarService } from './services/infocar.service';
@@ -10,11 +11,11 @@ import { InfocarService } from './services/infocar.service';
 export class AppComponent {
 
   trafficEvents: TrafficEvent[] = [];
-  provinces: any[] = [];
-  roads: any[] = [];
+  provinces: SelectionItem[] = [];
+  roads: SelectionItem[] = [];
 
   filteredEvents: TrafficEvent[] = [];
-  filteredRoads: any[] = [];
+  filteredRoads: SelectionItem[] = [];
 
   constructor(private infocarService: InfocarService, private availableProvinceService: AvailableProvincesService) { }
 
@@ -24,12 +25,8 @@ export class AppComponent {
 
       this.provinces = events.map(item => item.provincia)
         .reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])
-        .map(province => {
-          return {
-            "name": province,
-            "value": false
-          }
-        });
+        .map(province => new SelectionItem(province, false))
+        .sort((a, b) => a.compare(b));
 
 
       this.roads = this.getAvailableRoads();
@@ -43,18 +40,14 @@ export class AppComponent {
     return this.provinces.filter(item => item.value).map(item => item.name);
   }
 
-  getAvailableRoads() {
+  getAvailableRoads(): SelectionItem[] {
     const activeProvices = this.getActiveProvinces();
     return this.trafficEvents
       .filter(trafficEvent => activeProvices.includes(trafficEvent.provincia))
       .map(item => item.carretera)
       .reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])
-      .map(road => {
-        return {
-          "name": road,
-          "value": true
-        }
-      });
+      .map(road => new SelectionItem(road, true))
+      .sort((a, b) => a.compare(b));
   }
 
   filterRoads(activeProvinces) {
