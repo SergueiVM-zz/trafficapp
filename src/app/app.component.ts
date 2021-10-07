@@ -21,7 +21,35 @@ export class AppComponent {
 
   ngOnInit() {
     this.infocarService.getEvents().subscribe(events => {
-      this.trafficEvents = events;
+      this.trafficEvents = events
+        .map(item => {
+          const out = new TrafficEvent();
+          out.codEle = item.codEle;
+          out.provincia = item.provincia;
+          out.carretera = item.carretera;
+          out.pkIni = item.pkIni;
+          out.pkFinal = item.pkFinal;
+          out.sentido = item.sentido;
+          out.precision = item.precision;
+          out.poblacion = item.poblacion;
+          out.fecha = item.fecha;
+          out.alias = item.alias;
+          out.suceso = item.suceso;
+          out.descripcion = item.descripcion;
+          out.fechaFin = item.fechaFin;
+          out.lng = item.lng;
+          out.lat = item.lat;
+          out.causa = item.causa;
+          out.hora = item.hora;
+          out.estado = item.estado;
+          out.autonomia = item.autonomia;
+          out.icono = item.icono;
+          out.tipo = item.tipo;
+          out.horaFin = item.horaFin;
+          out.nivel = item.nivel;
+          return out;
+        })
+        .sort((a, b) => a.compare(b));
 
       this.provinces = events.map(item => item.provincia)
         .reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])

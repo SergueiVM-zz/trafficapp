@@ -26,4 +26,24 @@ export class TrafficEvent {
   horaFin: string; // "?",
   nivel: string; // "NO APLICA"
 
+  compare(obj: TrafficEvent) {
+    let out = 1
+    if (obj !== null) {
+      if (this.provincia < obj.provincia) {
+        out = -1;
+      } else if (this.provincia > obj.provincia) {
+        out = 1;
+      } else {
+        out = 0
+        if (this.carretera < obj.carretera) {
+          out = -1;
+        } else if (this.carretera > obj.carretera) {
+          out = 1;
+        } else {
+          out = 0
+        }
+      }
+    }
+    return out;
+  }
 }
