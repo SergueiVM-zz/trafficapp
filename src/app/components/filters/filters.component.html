@@ -10,7 +10,7 @@
       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
         aria-labelledby="panelsStayOpen-headingOne">
         <div class="accordion-body">
-          <div class="float-end"><button class="btn btn-sm" (click)="toggleProvinces($event)"><img src="/assets/sync.svg"
+          <div class="float-end"><button class="btn btn-sm" (click)="toggleProvinces()"><img src="/assets/sync.svg"
               alt="Invertir selection" /></button></div>
           <div class="btn-toolbar btn-toolbar-sm" role="toolbar">
             <app-province-filter *ngFor="let province of provinces" [item]="province"
