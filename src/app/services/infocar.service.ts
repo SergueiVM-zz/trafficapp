@@ -14,7 +14,7 @@ export class InfocarService {
   constructor(private http: HttpClient) { }
 
   getEvents(): Observable<TrafficEvent[]> {
-    var variable = this.http.get<TrafficEvent[]>(environment.infocarUrl);
-    return variable;
+    const httpResults = this.http.get<TrafficEvent[]>(environment.infocarUrl);
+    return httpResults;
   }
 }
