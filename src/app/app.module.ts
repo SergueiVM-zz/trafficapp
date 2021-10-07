@@ -8,7 +8,10 @@ import { ResultsComponent } from './components/results/results.component';
 import { TrafficEventComponent } from './components/traffic-event/traffic-event.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProvinceFilterComponent } from './components/province-filter/province-filter.component';
-import { RoadFilterComponent } from './components/road-filter/road-filter.component'
+import { RoadFilterComponent } from './components/road-filter/road-filter.component';
+import { SwapButtonComponent } from './components/swap-button/swap-button.component';
+import { SelectAllButtonComponent } from './components/select-all-button/select-all-button.component';
+import { UnselectAllButtonComponent } from './components/unselect-all-button/unselect-all-button.component'
 
 
 @NgModule({
@@ -20,6 +23,9 @@ import { RoadFilterComponent } from './components/road-filter/road-filter.compon
     TrafficEventComponent,
     ProvinceFilterComponent,
     RoadFilterComponent,
+    SwapButtonComponent,
+    SelectAllButtonComponent,
+    UnselectAllButtonComponent,
   ],
   imports: [
     BrowserModule,
