@@ -26,6 +26,7 @@ export class FiltersComponent implements OnInit {
 
   toggleRoads() {
     this.roads.forEach(road => road.value = !road.value);
+    this.roadSelectionChanged();
   }
 
   provinceSelectionChanged() {

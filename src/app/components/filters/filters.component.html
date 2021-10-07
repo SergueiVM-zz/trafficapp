@@ -10,11 +10,13 @@
       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
         aria-labelledby="panelsStayOpen-headingOne">
         <div class="accordion-body">
+          <div class="float-end"><button class="btn btn-sm" (click)="toggleProvinces($event)"><img src="/assets/sync.svg"
+              alt="Invertir selection" /></button></div>
           <div class="btn-toolbar btn-toolbar-sm" role="toolbar">
             <app-province-filter *ngFor="let province of provinces" [item]="province"
               (toggleProvince)="provinceSelectionChanged()"></app-province-filter>
           </div>
-          <button class="btn btn-sm btn-secondary" (click)="toggleProvinces($event)">Invertir selección</button>
+
         </div>
       </div>
     </div>
@@ -27,12 +29,13 @@
       </h2>
       <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
         aria-labelledby="panelsStayOpen-headingTwo">
-        <div class="accordion-body">
+        <div class="accordion-body ">
+          <div class="float-end"><button class="btn btn-sm" (click)="toggleRoads()"><img src="/assets/sync.svg"
+                alt="Invertir selection" /></button></div>
+
           <div class="btn-toolbar btn-toolbar-sm" role="toolbar">
             <app-road-filter *ngFor="let road of roads" [item]="road" (onToggleRoad)="roadSelectionChanged()"></app-road-filter>
           </div>
-          <button class="btn btn-sm btn-secondary" [hidden]="(roads.length == 0)" (click)="toggleRoads()">Invertir
-            selección</button>
         </div>
       </div>
     </div>
