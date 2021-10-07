@@ -35,4 +35,13 @@ export class FiltersComponent implements OnInit {
   roadSelectionChanged() {
     this.onFilterChange.emit(null);
   }
+
+  selectAllProvinces(value: boolean) {
+    this.provinces.forEach(province => province.value = value);
+    this.roadSelectionChanged();
+  }
+  selectAllRoads(value: boolean) {
+    this.roads.forEach(road => road.value = value);
+    this.roadSelectionChanged();
+  }
 }
