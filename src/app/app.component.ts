@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectionItem } from './models/selection-item';
 import { TrafficEvent } from './models/traffic-event';
 import { AvailableProvincesService } from './services/available-provinces.service';
@@ -8,7 +8,7 @@ import { InfocarService } from './services/infocar.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   trafficEvents: TrafficEvent[] = [];
   provinces: SelectionItem[] = [];
@@ -32,7 +32,7 @@ export class AppComponent {
           out.causa = item.causa;
           out.icono = item.icono;
           out.tipo = item.tipo;
-          console.log(out)
+          console.log(out);
           return out;
         })
         .sort((a, b) => a.compare(b));
@@ -73,9 +73,9 @@ export class AppComponent {
 
     const availableRoads = this.getAvailableRoads();
     const availableRoadsIndex = availableRoads.map(road => road.name);
-    //Remove Unavailable Roads
+    // Remove Unavailable Roads
     this.roads = this.roads.filter(road => availableRoadsIndex.includes(road.name));
-    //Add new roads
+    // Add new roads
     const roadsIndex = this.roads.map(road => road.name);
     availableRoads.filter(road => !roadsIndex.includes(road.name)).forEach(road => this.roads.push(road));
     return this.roads;

@@ -17,7 +17,4 @@ export class ResultsComponent implements OnInit {
   constructor(private infocarService: InfocarService) { }
 
   ngOnInit(): void { }
-
-  
-
 }

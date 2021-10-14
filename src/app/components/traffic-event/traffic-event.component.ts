@@ -16,9 +16,9 @@ export class TrafficEventComponent implements OnInit {
   }
 
   plainDescription() {
-    var html = this.item.descripcion;
-    var div = document.createElement("div");
+    const html = this.item.descripcion;
+    const div = document.createElement('div');
     div.innerHTML = html;
-    return div.textContent || div.innerText
+    return div.textContent || div.innerText;
   }
 }
