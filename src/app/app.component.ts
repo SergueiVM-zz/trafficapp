@@ -24,7 +24,7 @@ export class AppComponent {
       this.trafficEvents = events
         .map(item => {
           const out = new TrafficEvent();
-          out.provincia = item.provincia;
+          out.provincia = item.provincia !== ""? item.provincia: "📣" + item.suceso;
           out.carretera = item.carretera;
           out.alias = item.alias;
           out.suceso = item.suceso;
@@ -32,12 +32,11 @@ export class AppComponent {
           out.causa = item.causa;
           out.icono = item.icono;
           out.tipo = item.tipo;
-          console.log(out)
           return out;
         })
         .sort((a, b) => a.compare(b));
 
-      this.provinces = events.map(item => item.provincia)
+      this.provinces = events.map(item => item.provincia !== ""? item.provincia: "📣" + item.suceso)
         .reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])
         .map(province => new SelectionItem(province, false))
         .sort((a, b) => a.compare(b));
