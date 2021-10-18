@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { SelectionItem } from 'src/app/models/selection-item';
-import { AvailableProvincesService } from 'src/app/services/available-provinces.service';
 
 
 @Component({
@@ -14,7 +13,7 @@ export class FiltersComponent implements OnInit {
   @Input() roads: any[];
   @Output() onFilterChange: EventEmitter<SelectionItem> = new EventEmitter();
 
-  constructor(private availableProvincesService: AvailableProvincesService) { }
+  constructor() { }
 
   ngOnInit(): void { }
 

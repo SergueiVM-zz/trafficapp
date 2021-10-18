@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionItem } from './models/selection-item';
 import { TrafficEvent } from './models/traffic-event';
-import { AvailableProvincesService } from './services/available-provinces.service';
 import { InfocarService } from './services/infocar.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,14 +17,14 @@ export class AppComponent implements OnInit {
   filteredEvents: TrafficEvent[] = [];
   filteredRoads: SelectionItem[] = [];
 
-  constructor(private infocarService: InfocarService, private availableProvinceService: AvailableProvincesService) { }
+  constructor(private infocarService: InfocarService) { }
 
   ngOnInit() {
     this.infocarService.getEvents().subscribe(events => {
       this.trafficEvents = events
         .map(item => {
           const out = new TrafficEvent();
-          out.provincia = item.provincia !== ""? item.provincia: "📣" + item.suceso;
+          out.provincia = item.provincia !== "" ? item.provincia : "📣" + item.suceso;
           out.carretera = item.carretera;
           out.alias = item.alias;
           out.suceso = item.suceso;
@@ -32,15 +32,11 @@ export class AppComponent implements OnInit {
           out.causa = item.causa;
           out.icono = item.icono;
           out.tipo = item.tipo;
-<<<<<<< HEAD
-          console.log(out);
-=======
->>>>>>> empty-province
           return out;
         })
         .sort((a, b) => a.compare(b));
 
-      this.provinces = events.map(item => item.provincia !== ""? item.provincia: "📣" + item.suceso)
+      this.provinces = events.map(item => item.provincia !== "" ? item.provincia : "📣" + item.suceso)
         .reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])
         .map(province => new SelectionItem(province, false))
         .sort((a, b) => a.compare(b));

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TrafficEvent } from '../models/traffic-event';
 import { environment } from 'src/environments/environment';
-import { AvailableProvincesService } from './available-provinces.service';
 
 @Injectable({
   providedIn: 'root'
