@@ -17,9 +17,13 @@
           </div>
           <div class="btn-toolbar btn-toolbar-sm" role="toolbar">
             <app-province-filter *ngFor="let province of provinces" [item]="province"
-              (toggleProvince)="provinceSelectionChanged()"></app-province-filter>
+              (toggleProvince)="provinceSelectionChanged()"
+              [hidden]="provinces.length === 0"></app-province-filter>
           </div>
           <div class="clearfix"></div>
+          <div class="spinner-border" role="status" [hidden]="provinces.length > 0">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
       </div>
     </div>
