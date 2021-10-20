@@ -13,7 +13,7 @@ import { SwapButtonComponent } from './components/swap-button/swap-button.compon
 import { SelectAllButtonComponent } from './components/select-all-button/select-all-button.component';
 import { UnselectAllButtonComponent } from './components/unselect-all-button/unselect-all-button.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
 
 
 @NgModule({

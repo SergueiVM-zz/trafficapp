@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectionItem } from './models/selection-item';
 import { TrafficEvent } from './models/traffic-event';
-import { AvailableProvincesService } from './services/available-provinces.service';
 import { InfocarService } from './services/infocar.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   trafficEvents: TrafficEvent[] = [];
   provinces: SelectionItem[] = [];
@@ -17,14 +17,14 @@ export class AppComponent {
   filteredEvents: TrafficEvent[] = [];
   filteredRoads: SelectionItem[] = [];
 
-  constructor(private infocarService: InfocarService, private availableProvinceService: AvailableProvincesService) { }
+  constructor(private infocarService: InfocarService) { }
 
   ngOnInit() {
     this.infocarService.getEvents().subscribe(events => {
       this.trafficEvents = events
         .map(item => {
           const out = new TrafficEvent();
-          out.provincia = item.provincia !== ""? item.provincia: "📣" + item.suceso;
+          out.provincia = item.provincia !== "" ? item.provincia : "📣" + item.suceso;
           out.carretera = item.carretera;
           out.alias = item.alias;
           out.suceso = item.suceso;
@@ -36,7 +36,7 @@ export class AppComponent {
         })
         .sort((a, b) => a.compare(b));
 
-      this.provinces = events.map(item => item.provincia !== ""? item.provincia: "📣" + item.suceso)
+      this.provinces = events.map(item => item.provincia !== "" ? item.provincia : "📣" + item.suceso)
         .reduce((unique, item) => unique.includes(item) ? unique : [...unique, item], [])
         .map(province => new SelectionItem(province, false))
         .sort((a, b) => a.compare(b));
@@ -72,9 +72,9 @@ export class AppComponent {
 
     const availableRoads = this.getAvailableRoads();
     const availableRoadsIndex = availableRoads.map(road => road.name);
-    //Remove Unavailable Roads
+    // Remove Unavailable Roads
     this.roads = this.roads.filter(road => availableRoadsIndex.includes(road.name));
-    //Add new roads
+    // Add new roads
     const roadsIndex = this.roads.map(road => road.name);
     availableRoads.filter(road => !roadsIndex.includes(road.name)).forEach(road => this.roads.push(road));
     return this.roads;

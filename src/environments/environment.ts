@@ -1,10 +1,13 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import * as packageJson from '../../package.json';
+import * as _ from 'lodash';
 
 export const environment = {
   production: false,
-  infocarUrl: "https://x5j6sm2fv0.execute-api.eu-west-1.amazonaws.com/Prod/traffic/"
+  infocarUrl: 'https://x5j6sm2fv0.execute-api.eu-west-1.amazonaws.com/Prod/traffic/',
+  version: _.get(packageJson, "version")
 };
 
 /*

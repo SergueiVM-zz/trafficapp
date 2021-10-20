@@ -22,11 +22,11 @@ export class ProvinceFilterComponent implements OnInit {
   }
 
   setClasses() {
-    let classes = {
+    const classes = {
       item: true,
-      "btn btn-sm": true,
-      "btn-outline-success": this.item.value,
-      "btn-outline-danger": !this.item.value
+      'btn btn-sm': true,
+      'btn-outline-success': this.item.value,
+      'btn-outline-danger': !this.item.value
     };
 
     return classes;
